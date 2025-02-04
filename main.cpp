@@ -8,11 +8,11 @@
 // Simulation parameters
 constexpr float STEP_SIZE = 0.001f;
 constexpr float TOTAL_TIME = 100.0f;
-constexpr unsigned int PIXELS = 1024;
-constexpr float Q1MIN = -M_PI;
-constexpr float Q1MAX = M_PI;
-constexpr float Q2MIN = -M_PI;
-constexpr float Q2MAX = M_PI;
+constexpr unsigned int PIXELS = 4096;
+constexpr float Q1MIN = -0.630*4 - M_PI;
+constexpr float Q1MAX = -0.670*4 - M_PI;
+constexpr float Q2MIN = -0.060*4 - M_PI;
+constexpr float Q2MAX = -0.100*4 - M_PI;
 
 namespace compute = boost::compute;
 
@@ -87,7 +87,7 @@ void save_flip_times_to_hdf5(const std::vector<float>& flip_times, const std::st
 
 int main() {
 	// Get the total number of pendulums
-	constexpr unsigned int N = PIXELS * PIXELS /2;
+	constexpr unsigned int N = PIXELS * PIXELS;
 
 	// Initialize Boost.Compute context, queue, and device// get the default device
 	const compute::device device = compute::system::default_device();
