@@ -6,11 +6,13 @@ In this project I will simulate the double pendulum to create the double pendulu
 
 This repository is the continuation of [this repo](https://github.com/Mattia04/a-Lot-of-Pendulums), I have decided to create another repository because to implement GPU acceleration I had to write the code from zero again, so I choose to keep the two separate.
 
+After playing around with some simulations i estimated that this repository is $\approx 130$ faster than the previous one. 😱
+
 ## Requirements
 
 For the `C++` part of this repository you need to have installed on your machine: `Boost`, `OpenCL` and `hdf5`.
 
-For the `python` part you need to have installed: `h4py`, `PIL` and `numpy`. You can find `/scripts/Requirements.txt` to install everything using `venv`.
+For the `python` part you need to have installed: `h5py`, `PIL` and `numpy`. You can find `/scripts/Requirements.txt` to install everything using `venv`.
 
 ## Run Locally
 
@@ -51,6 +53,36 @@ Where $\varepsilon$ is the computation time you got for the simulation, $N$ is t
 - Then running the simulation using $\overline{N}$ pixels it will take approximately the time $t$.
 
 ## Examples
+
+#### High resolution (8192x8192) image:
+
+<img src="Images/img8192.png">
+
+#### Huge resolution image (12566x12566) 
+
+I literally don't have enough memory on my machine to create a bigger image than this (this "problem" is due to the fact that I did not optimize memory usage).
+
+`Computation time: 893.1 seconds`
+
+<img src="Images/img12566.png">
+
+### Zooms
+#### Leaf 1
+Stability region located in: $\theta_1 \in (-1.816, -1.718)$, $\theta_2 \in (-2.049, -1.963)$ radians.
+
+<img src="Images/imgLeaf4096.png">
+
+#### Leaf 2 
+
+Stability region located in $\theta_1 \in (-1.982, -1.702)$, $\theta_2 \in (-2.142, -1.862)$ radians.
+
+<img src="Images/imgLeaf2.png">
+
+#### Border
+Stability region located in $\theta_1 \in (-\pi, -2.902)$, $\theta_2 \in (-0.342, -0.102)$ radians.
+
+This one is peculiar because it is located near the border, so it has a lot of potential energy but it still does not flip after 100 seconds.
+<img src="Images/imgUpper4096.png">
 
 ## Authors
 
