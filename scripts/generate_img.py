@@ -17,17 +17,17 @@ def time_to_rgb(value):
 
 
 def main():
-    pixels = 2048
-    w, h = pixels // 2, pixels
+    pixels = 4096
+    w, h = pixels, pixels
     with h5py.File("../data/flip_times.h5", "r") as f:
         data = f["flip_times"][:]
 
     data = np.array(data).reshape((w, h))
-    data[data < 0] = data.max() + 1
-    data = np.concatenate((data, data[::-1, ::-1]), axis=0)
+    data[data < 0] = 100
+    # data = np.concatenate((data, data[::-1, ::-1]), axis=0)
 
     data = np.log(data + 1)
-    data = (data - np.min(data)) / (np.max(data) - np.min(data))
+    data /= np.log(101)
 
     colors = np.array([[time_to_rgb(d) for d in line] for line in data], dtype=np.uint8)
 
